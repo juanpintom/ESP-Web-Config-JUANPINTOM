@@ -18,7 +18,7 @@ const char PAGE_AdminMainPage[] PROGMEM = R"=====(
 <hr>
 <strong>Clicking Main Interface Button will leaving Access Point Mode, </strong>
 <strong>Please make a note of your IP Address Node in Network Information </strong>
-<p><strong>You can enter this Web Interface by your NEW IP Address Node again. </strong></p>
+<p><strong>You can enter this Web Interface again by your NEW IP Address Node given from Network Information. </strong></p>
 
 <script>
 window.onload = function ()

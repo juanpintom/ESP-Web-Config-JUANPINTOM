@@ -13,7 +13,6 @@ Ticker tkSecond;												// Second - Timer for Updating Datetime Structure
 boolean AdminEnabled = true;		// Enable Admin Mode for a given Time
 byte Minute_Old = 100;				// Helpvariable for checking, when a new Minute comes up (for Auto Turn On / Off)
 
-
 struct strConfig {
 	String ssid;
 	String password;
@@ -35,6 +34,8 @@ struct strConfig {
 	byte LED_R;
 	byte LED_G;
 	byte LED_B;
+	boolean NodeMode; //test node mode as gateway or peer
+
 }   config;
 
 
@@ -138,9 +139,9 @@ void WriteConfig()
 	EEPROM.write(303,config.TurnOnMinute);
 	EEPROM.write(304,config.TurnOffHour);
 	EEPROM.write(305,config.TurnOffMinute);
-	WriteStringToEEPROM(306,config.DeviceName);
+	EEPROM.write(306,config.NodeMode);
+	WriteStringToEEPROM(307,config.DeviceName);
 	
-
 
 	EEPROM.commit();
 	
@@ -187,7 +188,8 @@ boolean ReadConfig()
 		config.TurnOnMinute = EEPROM.read(303);
 		config.TurnOffHour = EEPROM.read(304);
 		config.TurnOffMinute = EEPROM.read(305);
-		config.DeviceName= ReadStringFromEEPROM(306);
+		config.NodeMode = EEPROM.read(306);
+		config.DeviceName= ReadStringFromEEPROM(307);
 
 		
 		check_ESPMode();

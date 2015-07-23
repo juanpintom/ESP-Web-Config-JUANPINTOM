@@ -10,10 +10,19 @@ const char PAGE_AdminGeneralSettings[] PROGMEM =  R"=====(
 <form action="" method="post">
 <table border="0"  cellspacing="0" cellpadding="3" >
 <tr>
-	<td align="right">Name of Device</td>
+	<td align="left">Node Name</td>
 	<td><input type="text" id="devicename" name="devicename" value=""></td>
 </tr>
-
+<hr>
+<tr><p>
+	<td align="left" colspan="2">Node Mode</td>
+</tr>
+<hr>
+<tr>
+	<td align="left"> Enabled this Node as Gateway?:</td>
+	<td><input type="checkbox" id="mnenabled" name="mnenabled"></td>
+</tr></p>
+<hr>
 <tr>
 	<td align="left" colspan="2"><hr></td>
 </tr>
@@ -44,6 +53,9 @@ const char PAGE_AdminGeneralSettings[] PROGMEM =  R"=====(
 <tr><td colspan="2" align="center"><input type="submit" style="width:150px" class="btn btn--m btn--blue" value="Save"></td></tr>
 </table>
 </form>
+<hr>
+<strong>You will need only ONE Gateway Node, If this is your First Node you must enabled it as Gateway..</strong>
+
 <script>
 
  
@@ -84,9 +96,11 @@ void send_general_html()
 	{
 		config.AutoTurnOn = false;
 		config.AutoTurnOff = false;
+		config.NodeMode = false;
 		String temp = "";
 		for ( uint8_t i = 0; i < server.args(); i++ ) {
 			if (server.argName(i) == "devicename") config.DeviceName = urldecode(server.arg(i)); 
+			if (server.argName(i) == "mnenabled") config.NodeMode = true; 
 			if (server.argName(i) == "tonenabled") config.AutoTurnOn = true; 
 			if (server.argName(i) == "toffenabled") config.AutoTurnOff = true; 
 			if (server.argName(i) == "tonhour") config.TurnOnHour =  server.arg(i).toInt(); 
@@ -96,6 +110,7 @@ void send_general_html()
 		}
 		WriteConfig();
 		firstStart = true;
+		ESP.restart();
 	}
 	server.send ( 200, "text/html", PAGE_AdminGeneralSettings ); 
 	Serial.println(__FUNCTION__); 
@@ -107,6 +122,7 @@ void send_general_configuration_values_html()
 {
 	String values ="";
 	values += "devicename|" +  (String)  config.DeviceName +  "|input\n";
+	values += "mnenabled|" +  (String) (config.NodeMode ? "checked" : "") + "|chk\n";
 	values += "tonhour|" +  (String)  config.TurnOnHour +  "|input\n";
 	values += "tonminute|" +   (String) config.TurnOnMinute +  "|input\n";
 	values += "toffhour|" +  (String)  config.TurnOffHour +  "|input\n";

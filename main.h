@@ -6,15 +6,15 @@
 const char PAGE_main[] PROGMEM = R"=====(
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <h2>Welcome to SerbaAuto Node </h2>     
+  <h2>Welcome to SerbaAuto </h2>     
       <form action="" method="GET">
-      <div id="mydynamicdata">Gateway Node </div>   <!-- added a DIV, where the dynamic data goes to -->
+      <div id="mydynamicdata">Souliss Node </div>   <!-- added a DIV, where the dynamic data goes to -->
       <hr>
       <a href="admin.html" style="width:250px" class="btn btn--m btn--blue" >Click Here to Begin</a><br>
       <hr>
       <input type="submit" style="width:273px" class="btn btn--m btn--blue" value="Reboot">
       <hr>
-      <div>More info on http://serbaauto.com</div>
+      <a href="http://serbaauto.com"> More info on http://serbaauto.com </a>
       <div>Contact us at serbaauto@gmail.com</div>
       </form>
 
@@ -44,7 +44,7 @@ const char PAGE_main[] PROGMEM = R"=====(
 void filldynamicdata()
 {        
     String values ="";
-    values += "mydynamicdata|" + (String) + "Gateway Node, Millis since start: " + (String) millis() + "|div\n";   // Build a string, like this:  ID|VALUE|TYPE
+    values += "mydynamicdata|" + (String) + "Souliss Node, Millis since start: " + (String) millis() + "|div\n";   // Build a string, like this:  ID|VALUE|TYPE
     server.send ( 200, "text/plain", values);   
 }
 

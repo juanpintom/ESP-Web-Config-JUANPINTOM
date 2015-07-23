@@ -35,6 +35,9 @@ struct strConfig {
 	byte LED_G;
 	byte LED_B;
 	boolean NodeMode; //test node mode as gateway or peer
+	byte byte0;
+	byte byte1;
+	byte byte2;
 
 }   config;
 
@@ -140,7 +143,10 @@ void WriteConfig()
 	EEPROM.write(304,config.TurnOffHour);
 	EEPROM.write(305,config.TurnOffMinute);
 	EEPROM.write(306,config.NodeMode);
-	WriteStringToEEPROM(307,config.DeviceName);
+	EEPROM.write(307,config.byte0);
+	EEPROM.write(308,config.byte1);
+	EEPROM.write(309,config.byte2);
+	WriteStringToEEPROM(310,config.DeviceName);
 	
 
 	EEPROM.commit();
@@ -189,7 +195,10 @@ boolean ReadConfig()
 		config.TurnOffHour = EEPROM.read(304);
 		config.TurnOffMinute = EEPROM.read(305);
 		config.NodeMode = EEPROM.read(306);
-		config.DeviceName= ReadStringFromEEPROM(307);
+		config.byte0 = EEPROM.read(307);
+		config.byte1 = EEPROM.read(308);
+		config.byte2 = EEPROM.read(309);
+		config.DeviceName= ReadStringFromEEPROM(310);
 
 		
 		check_ESPMode();

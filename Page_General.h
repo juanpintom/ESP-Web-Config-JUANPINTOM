@@ -21,6 +21,12 @@ const char PAGE_AdminGeneralSettings[] PROGMEM =  R"=====(
 <tr>
 	<td align="left"> Enabled this Node as Gateway?:</td>
 	<td><input type="checkbox" id="mnenabled" name="mnenabled"></td>
+	<td><input type="radio" name="byte0" value="0" checked> None</td>
+	<td><input type="radio" name="byte0" value="1"> DHT</td>
+	
+	
+	
+	
 </tr></p>
 <hr>
 <tr>

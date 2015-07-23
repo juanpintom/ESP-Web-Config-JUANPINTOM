@@ -21,12 +21,25 @@ const char PAGE_AdminGeneralSettings[] PROGMEM =  R"=====(
 <tr>
 	<td align="left"> Enabled this Node as Gateway?:</td>
 	<td><input type="checkbox" id="mnenabled" name="mnenabled"></td>
-	<td><input type="radio" name="byte0" value="0" checked> None</td>
-	<td><input type="radio" name="byte0" value="1"> DHT</td>
-	
-	
-	
-	
+	<td align="left"> Sensors Configuration:</td>
+	<td><input type="radio" id="byte0" name="byte0" value="0" checked> None</td>
+	<td><input type="radio" id="byte0" name="byte0" value="1"> DHT</td>
+	<td><input type="radio" id="byte0" name="byte0" value="2"> LDR</td>
+	<td><input type="radio" id="byte0" name="byte0" value="3"> DALLAS</td>
+	<td><input type="radio" id="byte0" name="byte0" value="4"> DHT LDR</td>
+	<td><input type="radio" id="byte0" name="byte0" value="5"> DHT DALLAS</td>
+	<td><input type="radio" id="byte0" name="byte0" value="6"> LDR DALLAS</td>
+	<td><input type="radio" id="byte0" name="byte0" value="7"> DHT LDR DALLAS</td>
+	<td align="left"> Lights Output Mode:</td>
+	<td><input type="radio" id="byte1" name="byte1" value="0" checked> None</td>
+	<td><input type="radio" id="byte1" name="byte1" value="1"> PWM MODE </td>
+	<td><input type="radio" id="byte1" name="byte1" value="2"> PIR_MODE</td>
+	<td><input type="radio" id="byte1" name="byte1" value="3"> RGB_MODE</td>
+	<td align="left"> Others:</td>
+	<td><input type="radio" id="byte2" name="byte2" value="0" checked> None</td>
+	<td><input type="radio" id="byte2" name="byte2" value="1"> CAPACITIVE </td>
+	<td><input type="radio" id="byte2" name="byte2" value="2"> RELAY</td>
+	<td><input type="radio" id="byte2" name="byte2" value="3"> PRESSURE SENSOR</td>
 </tr></p>
 <hr>
 <tr>
@@ -103,10 +116,16 @@ void send_general_html()
 		config.AutoTurnOn = false;
 		config.AutoTurnOff = false;
 		config.NodeMode = false;
+		config.byte0 = 0;
+		config.byte1 = 0;
+		config.byte2 = 0;
 		String temp = "";
 		for ( uint8_t i = 0; i < server.args(); i++ ) {
 			if (server.argName(i) == "devicename") config.DeviceName = urldecode(server.arg(i)); 
 			if (server.argName(i) == "mnenabled") config.NodeMode = true; 
+			if (server.argName(i) == "byte0") config.byte0 = server.arg(i).toInt(); 
+			if (server.argName(i) == "byte1") config.byte1 = server.arg(i).toInt(); 
+			if (server.argName(i) == "byte2") config.byte2 = server.arg(i).toInt(); 
 			if (server.argName(i) == "tonenabled") config.AutoTurnOn = true; 
 			if (server.argName(i) == "toffenabled") config.AutoTurnOff = true; 
 			if (server.argName(i) == "tonhour") config.TurnOnHour =  server.arg(i).toInt(); 

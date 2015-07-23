@@ -160,6 +160,9 @@ void send_general_configuration_values_html()
 	String values ="";
 	values += "devicename|" +  (String)  config.DeviceName +  "|input\n";
 	values += "mnenabled|" +  (String) (config.NodeMode ? "checked" : "") + "|chk\n";
+	values += "byte0|" +  (String) config.byte0 + "|input\n";
+	values += "byte1|" +  (String) config.byte1 + "|input\n";
+	values += "byte2|" +  (String) config.byte2 + "|input\n";
 	values += "tonhour|" +  (String)  config.TurnOnHour +  "|input\n";
 	values += "tonminute|" +   (String) config.TurnOnMinute +  "|input\n";
 	values += "toffhour|" +  (String)  config.TurnOffHour +  "|input\n";

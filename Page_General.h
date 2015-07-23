@@ -21,25 +21,37 @@ const char PAGE_AdminGeneralSettings[] PROGMEM =  R"=====(
 <tr>
 	<td align="left"> Enabled this Node as Gateway?:</td>
 	<td><input type="checkbox" id="mnenabled" name="mnenabled"></td>
-	<td align="left"> Sensors Configuration:</td>
-	<td><input type="radio" id="byte0" name="byte0" value="0" checked> None</td>
-	<td><input type="radio" id="byte0" name="byte0" value="1"> DHT</td>
-	<td><input type="radio" id="byte0" name="byte0" value="2"> LDR</td>
-	<td><input type="radio" id="byte0" name="byte0" value="3"> DALLAS</td>
-	<td><input type="radio" id="byte0" name="byte0" value="4"> DHT LDR</td>
-	<td><input type="radio" id="byte0" name="byte0" value="5"> DHT DALLAS</td>
-	<td><input type="radio" id="byte0" name="byte0" value="6"> LDR DALLAS</td>
-	<td><input type="radio" id="byte0" name="byte0" value="7"> DHT LDR DALLAS</td>
-	<td align="left"> Lights Output Mode:</td>
-	<td><input type="radio" id="byte1" name="byte1" value="0" checked> None</td>
-	<td><input type="radio" id="byte1" name="byte1" value="1"> PWM MODE </td>
-	<td><input type="radio" id="byte1" name="byte1" value="2"> PIR_MODE</td>
-	<td><input type="radio" id="byte1" name="byte1" value="3"> RGB_MODE</td>
-	<td align="left"> Others:</td>
-	<td><input type="radio" id="byte2" name="byte2" value="0" checked> None</td>
-	<td><input type="radio" id="byte2" name="byte2" value="1"> CAPACITIVE </td>
-	<td><input type="radio" id="byte2" name="byte2" value="2"> RELAY</td>
-	<td><input type="radio" id="byte2" name="byte2" value="3"> PRESSURE SENSOR</td>
+	
+	<tr><td>Sensors Configuration:</td><td>
+	<select  id="byte0" name="byte0">
+		<option value="0">None</option>
+		<option value="1">DHT</option>
+		<option value="2">LDR</option>
+		<option value="3">DALLAS</option>
+		<option value="4">DHT LDR</option>
+		<option value="5">DHT DALLAS</option>
+		<option value="6">LDR DALLAS</option>
+		<option value="7">DHT LDR DALLAS</option>
+	</select>
+	</td></tr>
+	<tr><td>Lights Output Mode:</td><td>
+	<select  id="byte1" name="byte1">
+		<option value="0">None</option>
+		<option value="1">PWM MODE</option>
+		<option value="2">PIR_MODE</option>
+		<option value="3">RGB_MODE</option>
+	</select>
+	</td></tr>
+	
+	<tr><td>Others: </td><td>
+	<select  id="byte2" name="byte2">
+		<option value="0">None</option>
+		<option value="1">CAPACITIVEE</option>
+		<option value="2">RELAY</option>
+		<option value="3">PRESSURE SENSOR</option>
+	</select>
+	</td></tr>
+	
 </tr></p>
 <hr>
 <tr>
